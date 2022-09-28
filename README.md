@@ -1,4 +1,4 @@
-# duael-tetris
+# DUÆL TETRIS
 
 
 Regras:
