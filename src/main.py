@@ -8,6 +8,7 @@ pg.init()
 RES = [1366, 768]
 COR = (0,255,0)
 CLOCK = pg.time.Clock()
+QNTD_BOTOES = 2
 
 #configs
 SCREEN = pg.display.set_mode((RES[0], RES[1]))
@@ -27,21 +28,30 @@ solo_rect = solo_surf.get_rect(center = (posx_b_s, posy_b))
 dual_surf = font_b.render('DUAL', False, COR)
 dual_rect = dual_surf.get_rect(center = (posx_b_d, posy_b))
 
-title_screen = True
+screen = 'menu'
 
 if __name__ == "__main__":
 	select = ''
+	botao_selecionado = 1  # Usado como referência para mapear qual o botão está sendo selecionado
 	while 1:
 		SCREEN.fill((0,0,0))
-		if title_screen:
+		if screen == 'menu':
+			# Controle de eventos
 			for event in pg.event.get(): 
 				if event.type == pg.QUIT: sys.exit()
-				if event.type == pg.KEYDOWN:
-					if event.key == pg.K_LEFT: select = '<'
-					if event.key == pg.K_RIGHT: select = '>'
-			if select == '<': pg.draw.rect(SCREEN, COR, solo_rect.inflate(50,0), 5)
-			if select == '>': pg.draw.rect(SCREEN, COR, dual_rect.inflate(50,0), 5)
 
+				# Controle dos comandos do menu
+				if event.type == pg.KEYDOWN:
+					if event.key == pg.K_LEFT: botao_selecionado -= 1
+					if event.key == pg.K_RIGHT: botao_selecionado += 1
+
+			# Desenha o cursor de seleção
+			if botao_selecionado == 1: pg.draw.rect(SCREEN, COR, solo_rect.inflate(int(RES[1] / 15.3),0), 5)
+			if botao_selecionado == 2: pg.draw.rect(SCREEN, COR, dual_rect.inflate(int(RES[1] / 15.3),0), 5)
+			if botao_selecionado > 2: botao_selecionado = 1
+			elif botao_selecionado < 1: botao_selecionado = 2
+
+			# Coloca os objetos na tela
 			SCREEN.blit(titulo_surf, titulo_rect)
 			SCREEN.blit(solo_surf, solo_rect)
 			SCREEN.blit(dual_surf, dual_rect)
