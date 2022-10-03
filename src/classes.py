@@ -1,8 +1,9 @@
-from main import pg, FONTS, COR
-class Botao(pg.sprite.Sprite):
+import main
+
+class Botao(main.pg.sprite.Sprite):
 	def __init__(self, text: str, pos: tuple, selecionado: bool = False):
 		super().__init__()
-		self.image = FONTS[1].render(text, False, COR)
+		self.image = main.FONTS[1].render(text, False, main.COR)
 		self.rect = self.image.get_rect(center = pos)
 		self.selecionado = selecionado
 
@@ -15,6 +16,6 @@ class Player:
 	def pontuar(self, points):
 		self.points += points
 
-class Bloco(pg.sprite.Sprite):
+class Bloco(main.pg.sprite.Sprite):
 	def __init__(self):
 		super().__init__()

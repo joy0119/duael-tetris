@@ -1,11 +1,14 @@
 # Bibliotecas
 import sys, pygame as pg
+import webbrowser, os
+import game
+
 # Classes
 import menu
 pg.init()
 
 # CONFIGS
-RES = [1366, 768]
+RES = [1024, 640]
 COR = (0,255,0)
 CLOCK = pg.time.Clock()
 TAM_CELL = RES[1] / 30
@@ -32,15 +35,19 @@ tabuleiro = [[0,0,0,0,0,0,0,0,0,0],
 			 [0,0,0,0,0,0,0,0,0,0],
 			 [0,0,0,0,0,0,0,0,0,0]]
 
-tittle = pg.font.Font('duael-tetris/assets/font/Alkalami-Regular.ttf', int(RES[0] / 18))
-button = pg.font.Font('duael-tetris/assets/font/Alkalami-Regular.ttf', int(RES[0] / 24))
+tittle = pg.font.Font('assets/font/Alkalami-Regular.ttf', int(RES[0] / 18))
+button = pg.font.Font('assets/font/Alkalami-Regular.ttf', int(RES[0] / 24))
+chat = pg.font.Font('assets/font/LemonTea.otf', int(RES[1] / 45))
+FONTS = [tittle, button, chat]
 
-FONTS = [tittle, button]
+#abrir arquivo txt
+# arq = open("tutorial.txt")
 
 # LOOP
 if __name__ == "__main__":
 	while True: # big loop
-		for event in pg.event.get(): 
-			if event.type == pg.QUIT: sys.exit()
 		CLOCK.tick(60)
-		menu.menu()
+		decisao = menu.menu()
+		if decisao == 'solo': pass #game.solo()
+		elif decisao == 'mult': game.mult()
+		# elif decisao == 'help': print(arq.readlines())
