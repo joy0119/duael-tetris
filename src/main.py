@@ -3,7 +3,6 @@ from configs import *
 from game import Jooj
 
 
-
 class Menu:
 	def __init__(self):
 		self.display_surface = pygame.display.get_surface()
@@ -65,14 +64,8 @@ class Game:
 		self.clock.tick(FPS)
 		while True:
 			self.screen.fill('black')
-			
-			
 			if self.tela == 'menu': self.menu.run()
-			elif self.tela == 'game': 
-				self.jooj.show()
-				self.jooj.player_input()
-
-
+			elif self.tela == 'game': self.jooj.run()
 			pygame.display.update()
 
 if __name__ == '__main__':
