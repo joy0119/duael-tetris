@@ -1,6 +1,6 @@
 # Resolução do jogo
-WIDTH = 1280
-HEIGHT = 720
+WIDTH = 980
+HEIGHT = 640
 # Frames por segundo
 FPS = 30
 

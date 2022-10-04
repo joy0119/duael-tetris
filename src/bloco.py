@@ -19,8 +19,7 @@ class Peca():
 		self.type = type
 		self.blocos = []
 		for _ in range(4): self.blocos.append(Grid((5, 0)))
-		self.gravity = 0
-
+		
 
 	def spawn(self):
 		if self.type == 'i':
@@ -33,7 +32,7 @@ class Peca():
 			self.blocos[3].rect.midbottom = self.blocos[2].rect.midtop
 		elif self.type == 'l':
 			self.blocos[0].rect.midleft = self.blocos[1].rect.midright
-			self.blocos[1].rect.midtop = self.blocos[2].rect.midbottom
+			self.blocos[2].rect.midbottom = self.blocos[1].rect.midtop
 			self.blocos[3].rect.midbottom = self.blocos[2].rect.midtop
 		elif self.type == 'o':
 			self.blocos[0].rect.midright = self.blocos[1].rect.midleft
@@ -41,7 +40,7 @@ class Peca():
 			self.blocos[3].rect.midleft = self.blocos[2].rect.midright
 		elif self.type == 's':
 			self.blocos[0].rect.midleft = self.blocos[1].rect.midright
-			self.blocos[1].rect.midbottom = self.blocos[2].rect.midtop
+			self.blocos[2].rect.midbottom = self.blocos[1].rect.midtop
 			self.blocos[3].rect.midright = self.blocos[2].rect.midleft
 		elif self.type == 'z':
 			self.blocos[0].rect.midright = self.blocos[1].rect.midleft
@@ -50,3 +49,16 @@ class Peca():
 
 	def desenhar(self, screen, cor):
 		for bloco in self.blocos: bloco.desenhar(screen, cor)
+
+	#implemetar animacao
+	def gravidade(self):
+		self.blocos[1].rect.midtop = self.blocos[1].rect.midbottom
+		self.spawn()
+	
+	def move_esq(self):
+		self.blocos[1].rect.midright = self.blocos[1].rect.midleft
+		self.spawn()
+	
+	def move_dir(self):
+		self.blocos[1].rect.midleft = self.blocos[1].rect.midright
+		self.spawn()
