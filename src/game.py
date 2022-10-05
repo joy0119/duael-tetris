@@ -31,8 +31,16 @@ class Jooj:
 				if event.key == pygame.K_z: self.peca = self.create_peca_definido('z')
 				if event.key == pygame.K_s: self.peca = self.create_peca_definido('s')
 				if event.key == pygame.K_o: self.peca = self.create_peca_definido('o')
-				if event.key == pygame.K_LEFT: self.peca.move_esq()
-				if event.key == pygame.K_RIGHT: self.peca.move_dir()
+				if event.key == pygame.K_LEFT: 
+					self.peca.move_esq()
+					self.show()
+				if event.key == pygame.K_RIGHT: 
+					self.peca.move_dir()
+					self.show()
+				if event.key == pygame.K_UP: 
+					self.peca.girar()
+					self.show()
+				
 
 	def create_peca(self):
 		tipo = random.choice(['j','l','i','z','s','o'])
@@ -42,10 +50,10 @@ class Jooj:
 		return Peca(tipo)
 	
 	def run(self):
-		self.player_input()
 		self.peca.spawn()
-		if pygame.time.get_ticks() % 100 == self.nivel:
+		if pygame.time.get_ticks() % 1000 == self.nivel:
 			for i in range(self.nivel): 
 				self.peca.gravidade()
 				self.show()
+		self.player_input()
 		self.show()

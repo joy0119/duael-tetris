@@ -2,7 +2,6 @@ import pygame, sys
 from configs import *
 from game import Jooj
 
-
 class Menu:
 	def __init__(self):
 		self.display_surface = pygame.display.get_surface()

@@ -1,12 +1,15 @@
 # Resolução do jogo
-WIDTH = 980
-HEIGHT = 640
+from tkinter import Widget
+
+
+WIDTH = 600
+HEIGHT = 400
 # Frames por segundo
 FPS = 30
 
 # Cada célula deve ter um tamanho para a redenrização:
 TAM_CELULA: int = int(HEIGHT / 24)  # 20 é o numero de células na altura, como não queremos que isto fique colado nas borbas, chutei um valor maior
-POS_TABULEIRO = (50,50)
+POS_TABULEIRO = (WIDTH / 4, 10)
 # Onde peças cairão e serão empilhadas: 
 tabuleiro = [['0','0','0','0','0','0','0','0','0','0'],
 			 ['0','0','0','0','0','0','0','0','0','0'],
@@ -31,7 +34,7 @@ tabuleiro = [['0','0','0','0','0','0','0','0','0','0'],
 			]
 
 # Fontes
-MENU_FONT = 'assets/font/Alkalami-Regular.ttf '
+MENU_FONT = 'duael-tetris/assets/font/Alkalami-Regular.ttf'
 GAME_FONT = 'assets/font/LemonTea.otf'
 TITLE_FONT_SIZE = int(WIDTH / 15)
 BUTTON_FONT_SIZE = int(WIDTH / 24)
